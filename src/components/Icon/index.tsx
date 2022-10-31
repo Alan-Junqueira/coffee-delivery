@@ -1,4 +1,3 @@
-import logo from '../../assets/logo.png';
 import {
   ShoppingCart,
   MapPin,
@@ -11,17 +10,30 @@ import {
   Trash
 } from 'phosphor-react';
 import { Money } from './Money';
+import { Logo } from './Logo';
 
 interface IIcon {
-  icon: string;
-  iconColor: string;
+  icon:
+    | 'logo'
+    | 'cart'
+    | 'map'
+    | 'mapFill'
+    | 'timer'
+    | 'package'
+    | 'coffee'
+    | 'creditCard'
+    | 'trash'
+    | 'bank'
+    | 'money'
+    | 'currencyDolar';
+  iconColor?: string;
   size?: number;
 }
 
 export const Icon = ({ icon, iconColor, size }: IIcon) => {
   return (
     <>
-      {icon === 'logo' && <img src={logo} alt="" />}
+      {icon === 'logo' && <Logo />}
       {icon === 'cart' && (
         <ShoppingCart color={iconColor} weight="fill" size={size} />
       )}

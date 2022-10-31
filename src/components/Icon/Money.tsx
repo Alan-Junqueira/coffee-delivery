@@ -4,7 +4,6 @@ interface IMoney {
   size: number;
 }
 
-// eslint-disable-next-line no-undef
 interface MoneyProps extends SVGAttributes<HTMLOrSVGElement> {}
 
 export const Money = ({ size }: IMoney, props: MoneyProps) => {

@@ -1,13 +1,19 @@
-import { useState } from 'react'
-import { Router } from './router'
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { Router } from './router';
+import { GlobalStyle } from './styles/global';
+import { defaultTheme } from './styles/themes/default';
 
 function App() {
-
   return (
-    <div className="App">
-      <Router />
-    </div>
-  )
+    <BrowserRouter>
+      <ThemeProvider theme={defaultTheme}>
+        <Router />
+
+        <GlobalStyle />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
