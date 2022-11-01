@@ -55,7 +55,7 @@ export const Icon = ({ icon, iconColor, size }: IIcon) => {
       {icon === 'bank' && <Bank color={iconColor} size={size} />}
       {icon === 'money' && <Money size={15} />}
       {icon === 'currencyDolar' && (
-        <CurrencyDollar color={iconColor} weight="fill" size={size} />
+        <CurrencyDollar color={iconColor} weight="regular" size={size} />
       )}
     </>
   );

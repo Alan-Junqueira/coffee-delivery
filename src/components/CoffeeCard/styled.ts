@@ -10,10 +10,6 @@ export const CoffeeCardContainer = styled.li`
   align-items: center;
   flex-direction: column;
 
-  border: 1px solid transparent;
-  border-image: linear-gradient(90deg, #dbac2c, #8047f8);
-  border-image-slice: 1;
-
   img {
     margin-top: -1.25rem;
     margin-bottom: 0.75rem;
