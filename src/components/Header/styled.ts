@@ -41,7 +41,8 @@ export const NavContainer = styled.nav<NavContainerProps>`
 
     &::after {
       position: absolute;
-      content: '${(props) => (props.cartQuantity ? props.cartQuantity : '')}';
+
+      content: '${(props) => props.cartQuantity && props.cartQuantity}';
       width: 20px;
       height: 20px;
       background-color: ${(props) => props.theme['yellow-dark']};
@@ -53,12 +54,18 @@ export const NavContainer = styled.nav<NavContainerProps>`
       align-items: center;
       justify-content: center;
 
-      font-family: 'Roboto';
       font-style: normal;
       font-weight: 700;
       font-size: 12px;
-      line-height: 130%;
       color: ${(props) => props.theme.white};
     }
   }
+`;
+
+export const LocaleTitle = styled.span`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+
+  color: ${(props) => props.theme['purple-dark']};
 `;
