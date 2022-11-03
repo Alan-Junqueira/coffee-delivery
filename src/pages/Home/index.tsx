@@ -1,37 +1,58 @@
-import { CoffeesSection, HomeContainer } from './styled';
+import {
+  Branding,
+  BrandItens,
+  CoffeesSection,
+  HomeContainer,
+  HomeTitle
+} from './styled';
 import { CoffeeCard } from '../../components/CoffeeCard';
+import { BrandIten } from './BrandIten';
+import { coffeList } from '../../libs/coffeeList';
 
 export const Home = () => {
   return (
     <HomeContainer>
-      <main>Main</main>
-      <hr />
+      <main>
+        <Branding>
+          <HomeTitle>
+            Encontre o café perfeito para qualquer hora do dia
+          </HomeTitle>
+          <div>
+            <BrandItens>
+              <BrandIten icon="cart" description="Compra simples e segura" />
+              <BrandIten
+                icon="timer"
+                description="Entrega rápida e rastreada"
+              />
+            </BrandItens>
+            <BrandItens>
+              <BrandIten
+                icon="package"
+                description="Embalagem mantém o café intacto"
+              />
+
+              <BrandIten
+                icon="coffee"
+                description="O café chega fresquinho até você"
+              />
+            </BrandItens>
+          </div>
+        </Branding>
+        <img src="images/home-coffee-brand.png" alt="" />
+      </main>
       <CoffeesSection>
         <h2>Nossos Cafés</h2>
         <ul>
-          <CoffeeCard
-            banner="/images/Type=Americano.png"
-            price={9.9}
-            subtitle="O tradicional café feito com água quente e grãos moídos"
-            tags={['tradicional']}
-            title="Expresso Tradicional"
-          />
-
-          <CoffeeCard
-            banner="/images/Type=Americano.png"
-            price={9.9}
-            subtitle="Expresso diluído, menos intenso que o tradicional"
-            tags={['tradicional']}
-            title="Expresso Americano"
-          />
-
-          <CoffeeCard
-            banner="/images/Type=Americano.png"
-            price={9.9}
-            subtitle="Café expresso tradicional com espuma cremosa"
-            tags={['especial', 'alcoólico', 'gelado']}
-            title="Expresso Cremoso"
-          />
+          {coffeList.map((coffee, index) => (
+            <CoffeeCard
+              banner={coffee.banner}
+              price={coffee.price}
+              subtitle={coffee.subtitle}
+              tags={coffee.tags}
+              title={coffee.title}
+              key={index}
+            />
+          ))}
         </ul>
       </CoffeesSection>
     </HomeContainer>

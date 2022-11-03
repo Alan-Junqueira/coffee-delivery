@@ -30,7 +30,9 @@ export const CheckoutSuccess = () => {
             paymentMethod="Cartão de Crédito"
           />
         </DeliveryInformations>
-        <img src="/images/delivery.png" alt="" />
+        <div>
+          <img src="/images/delivery.png" alt="" />
+        </div>
       </Delivery>
     </CheckoutSuccessContainer>
   );

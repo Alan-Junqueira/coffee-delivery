@@ -19,6 +19,7 @@ export const DeliveryIconMap = styled.div`
 `;
 
 export const DeliveryDetails = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
 
@@ -26,6 +27,14 @@ export const DeliveryDetails = styled.div`
   font-size: 1rem;
   line-height: 130%;
   color: ${(props) => props.theme['base-text']};
+
+  span,
+  strong {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
 
   strong {
     font-weight: 700;

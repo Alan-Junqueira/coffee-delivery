@@ -34,7 +34,7 @@ export const DeliveryInformations = styled.div`
   position: relative;
   width: 100%;
   max-width: 32.875rem;
-  background-color: #fff;
+  background-color: #FAFAFA;
   border-radius: 6px 36px;
   padding: 2.5rem;
 

@@ -22,5 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.background};
     color: ${(props) => props.theme['base-text']};
     height: 100%;
+
+    -webkit-font-smoothing: antialiased
   }
 `;

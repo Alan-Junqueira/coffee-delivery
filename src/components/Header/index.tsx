@@ -5,13 +5,15 @@ import { HeaderContainer, LocaleTitle, NavContainer } from './styled';
 export const Header = () => {
   return (
     <HeaderContainer>
-      <Icon icon="logo" />
+      <NavLink to="/" title="home">
+        <Icon icon="logo" />
+      </NavLink>
       <NavContainer cartQuantity={5}>
         <div>
           <Icon icon="mapFill" iconColor="#8047F8" size={22} />
           <LocaleTitle>Porto Alegre, RS</LocaleTitle>
         </div>
-        <NavLink end to="/checkout" title="checkout" >
+        <NavLink end to="/checkout" title="checkout">
           <Icon icon="cart" iconColor="#C47F17" size={22} />
         </NavLink>
       </NavContainer>
