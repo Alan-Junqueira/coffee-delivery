@@ -7,7 +7,8 @@ import {
   CurrencyDollar,
   CreditCard,
   Bank,
-  Trash
+  Trash,
+  MapPinLine
 } from 'phosphor-react';
 import { Money } from './Money';
 import { Logo } from './Logo';
@@ -25,7 +26,8 @@ interface IIcon {
     | 'trash'
     | 'bank'
     | 'money'
-    | 'currencyDolar';
+    | 'currencyDolar'
+    | 'mapPinLine';
   iconColor?: string;
   size?: number;
 }
@@ -54,6 +56,7 @@ export const Icon = ({ icon, iconColor, size }: IIcon) => {
       {icon === 'trash' && <Trash color={iconColor} size={size} />}
       {icon === 'bank' && <Bank color={iconColor} size={size} />}
       {icon === 'money' && <Money size={15} />}
+      {icon === 'mapPinLine' && <MapPinLine weight="regular" size={size} color={iconColor}/>}
       {icon === 'currencyDolar' && (
         <CurrencyDollar color={iconColor} weight="regular" size={size} />
       )}

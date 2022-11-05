@@ -19,7 +19,7 @@ export const HomeContainer = styled.main`
       background-image: url('/images/home-background.svg');
       background-size: cover;
       background-repeat: no-repeat;
-      /* background-color: red; */
+
       width: calc(100vw - 21px);
       height: 100%;
       top: 0;
@@ -38,9 +38,9 @@ export const Branding = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 2.5rem;
-    
-    @media(min-width: 1325px){
-      gap: 1.25rem
+
+    @media (min-width: 1325px) {
+      gap: 1.25rem;
     }
   }
 `;
@@ -50,8 +50,6 @@ export const BrandItens = styled.div`
   flex-direction: column;
   gap: 1.25rem;
 `;
-
-
 
 export const HomeTitle = styled.h1`
   font-family: 'Baloo 2';
