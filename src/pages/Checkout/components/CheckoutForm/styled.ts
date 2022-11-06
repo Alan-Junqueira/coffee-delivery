@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CheckoutFormContainer = styled.form`
+export const CheckoutFormContainer = styled.div`
   width: 100%;
   max-width: 40rem;
   padding: 2.5rem;
@@ -8,7 +8,6 @@ export const CheckoutFormContainer = styled.form`
   border-radius: 6px;
   background-color: ${(props) => props.theme['base-card']};
 `;
-
 interface IInputDefault {
   width?: number;
 }

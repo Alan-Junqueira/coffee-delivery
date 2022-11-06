@@ -18,6 +18,10 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
   }
 
+  button {
+    cursor: pointer;
+  }
+
   body {
     background-color: ${(props) => props.theme.background};
     color: ${(props) => props.theme['base-text']};
