@@ -3,7 +3,8 @@ import {
   BrandItens,
   CoffeesSection,
   HomeContainer,
-  HomeTitle
+  HomeTitle,
+  ImageContainer
 } from './styled';
 import { CoffeeCard } from '../../components/CoffeeCard';
 import { BrandIten } from './BrandIten';
@@ -38,7 +39,9 @@ export const Home = () => {
             </BrandItens>
           </div>
         </Branding>
-        <img src="images/home-coffee-brand.png" alt="" />
+        <ImageContainer>
+          <img src="images/home-coffee-brand.png" alt="" />
+        </ImageContainer>
       </main>
       <CoffeesSection>
         <h2>Nossos Cafés</h2>

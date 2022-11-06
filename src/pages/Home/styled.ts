@@ -7,10 +7,17 @@ export const HomeContainer = styled.main`
 
   main {
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
+    justify-content: space-between;
     gap: 3.5rem;
     padding: 110px 0 74px 0;
+
+    @media(max-width: 1330px) {
+      grid-template-columns: 1fr;
+      justify-content: space-around;
+    }
 
     &::before {
       position: absolute;
@@ -29,10 +36,18 @@ export const HomeContainer = styled.main`
   }
 `;
 
+export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Branding = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5rem;
+
+
 
   > div {
     display: flex;
@@ -43,6 +58,12 @@ export const Branding = styled.div`
       gap: 1.25rem;
     }
   }
+
+  @media(max-width: 1330px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 `;
 
 export const BrandItens = styled.div`
@@ -57,6 +78,8 @@ export const HomeTitle = styled.h1`
   font-size: 48px;
   line-height: 130%;
   color: ${(props) => props.theme['base-title']};
+
+  max-width: 36.75rem;
 `;
 
 export const CoffeesSection = styled.section`
@@ -73,10 +96,23 @@ export const CoffeesSection = styled.section`
   }
 
   ul {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     flex-wrap: wrap;
     gap: 2rem;
 
     justify-content: space-around;
+
+    @media(max-width: 1530px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media(max-width: 1230px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media(max-width: 920px) {
+      grid-template-columns: 1fr
+    }
   }
 `;
