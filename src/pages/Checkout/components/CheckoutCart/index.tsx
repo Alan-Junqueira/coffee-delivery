@@ -1,6 +1,9 @@
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '../../../../components/Icon';
 import { InputAmountButton } from '../../../../components/InputAmoutButton';
+import { CartContext } from '../../../../contexts/CartContext';
+import { coffeeList } from '../../../../libs/coffeeList';
 import {
   CartItem,
   CartProductDescription,
@@ -10,10 +13,24 @@ import {
 } from './styled';
 
 export const CheckoutCart = () => {
+  const [amountQuantity, setAmountQuantity] = useState(1);
+
   const navigate = useNavigate();
 
+  const { cartItens } = useContext(CartContext);
+
+  // const cartItensActives = cartItens.filter((iten) => {
+  //   let newArr = [];
+  //   for (let i = 0; i < coffeeList.length; i++) {
+  //     if (iten.id === coffeeList[i].id) {
+  //       return newArr.push(coffeeList[i], iten.amountQuantity);
+  //     }
+  //   }
+  // });
+
+
   const handleButtonSubmit = () => {
-    navigate('/checkout-success');
+    // navigate('/checkout-success');
   };
 
   return (
@@ -25,7 +42,11 @@ export const CheckoutCart = () => {
         <CartProductDescription>
           <span>Expresso Tradicional</span>
           <div>
-            <InputAmountButton />
+            <InputAmountButton
+              small
+              amountQuantity={amountQuantity}
+              setAmountQuantity={setAmountQuantity}
+            />
             <CartButtonRemove>
               <Icon icon="trash" iconColor="#8047F8" size={16} />
               <span>Remover</span>
@@ -34,22 +55,7 @@ export const CheckoutCart = () => {
         </CartProductDescription>
         <strong>R$: 9,90</strong>
       </CartItem>
-      <CartItem>
-        <div>
-          <img src="/images/Type=Americano.png" alt="" />
-        </div>
-        <CartProductDescription>
-          <span>Expresso Tradicional</span>
-          <div>
-            <InputAmountButton />
-            <CartButtonRemove>
-              <Icon icon="trash" iconColor="#8047F8" size={16} />
-              <span>Remover</span>
-            </CartButtonRemove>
-          </div>
-        </CartProductDescription>
-        <strong>R$: 9,90</strong>
-      </CartItem>
+
       <DescriptionCartValues>
         <div>
           <span>Total de Itens</span>
@@ -65,9 +71,7 @@ export const CheckoutCart = () => {
         </div>
       </DescriptionCartValues>
 
-      <button type="submit" onClick={handleButtonSubmit}>
-        Confirmar Pedido
-      </button>
+      <button type="submit">Confirmar Pedido</button>
     </CheckoutCartContainer>
   );
 };

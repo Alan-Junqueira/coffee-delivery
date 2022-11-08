@@ -1,3 +1,5 @@
+import { useFormContext } from 'react-hook-form';
+
 import { CheckoutLabelForm } from '../CheckoutLabelForm';
 import {
   CheckoutFormContainer,
@@ -6,6 +8,7 @@ import {
 } from './styled';
 
 export const CheckoutForm = () => {
+  const { register } = useFormContext();
   return (
     <CheckoutFormContainer>
       <div style={{ marginBottom: '2rem' }}>
@@ -17,22 +20,57 @@ export const CheckoutForm = () => {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <InputDefault width={200} type="text" placeholder="CEP" />
-        <InputDefault type="text" placeholder="Rua" />
+        <InputDefault
+          width={200}
+          type="text"
+          placeholder="CEP"
+          id="cep"
+          {...register('cep')}
+        />
+        <InputDefault
+          type="text"
+          placeholder="Rua"
+          id="street"
+          {...register('street')}
+        />
         <div style={{ display: 'flex', gap: '.75rem' }}>
-          <InputDefault type="number" placeholder="Número" width={200} />
-          <ContainerOpcional htmlFor="complemento">
+          <InputDefault
+            type="text"
+            placeholder="Número"
+            width={200}
+            id="number"
+            {...register('number')}
+          />
+          <ContainerOpcional htmlFor="complement">
             <InputDefault
               type="text"
               placeholder="Complemento"
-              id="complemento"
+              id="complement"
+              {...register('complement')}
             />
           </ContainerOpcional>
         </div>
         <div style={{ display: 'flex', gap: '.75rem' }}>
-          <InputDefault type="text" placeholder="Bairro" width={200} />
-          <InputDefault type="text" placeholder="Cidade" />
-          <InputDefault type="text" placeholder="UF" width={60} />
+          <InputDefault
+            type="text"
+            placeholder="Bairro"
+            width={200}
+            id="district"
+            {...register('district')}
+          />
+          <InputDefault
+            type="text"
+            placeholder="Cidade"
+            id="city"
+            {...register('city')}
+          />
+          <InputDefault
+            type="text"
+            placeholder="UF"
+            width={60}
+            id="uf"
+            {...register('uf')}
+          />
         </div>
       </div>
     </CheckoutFormContainer>

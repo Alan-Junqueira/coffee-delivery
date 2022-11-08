@@ -1,22 +1,40 @@
-import React, { useState } from 'react';
 import { InputAmountButtonContainer } from './styled';
-import minus from './minus.svg';
-import plus from './plus.svg';
 import { useFormatter } from '../../hooks/useFormatter';
+import { Icon } from '../Icon';
 
-export const InputAmountButton = () => {
-  const [cartQuantity, setCartQuantity] = useState(0);
+interface IInputAmountButton {
+  small: boolean;
+  setAmountQuantity: (quantity: number) => void;
+  amountQuantity: number;
+}
 
+export const InputAmountButton = ({
+  amountQuantity,
+  setAmountQuantity,
+  small
+}: IInputAmountButton) => {
   const formatter = useFormatter();
 
+  function handleMinusClick() {
+    if (amountQuantity > 0) {
+      setAmountQuantity(amountQuantity - 1);
+    } else {
+      return;
+    }
+  }
+
+  function handlePlusClick() {
+    setAmountQuantity(amountQuantity + 1);
+  }
+
   return (
-    <InputAmountButtonContainer>
-      <button onClick={() => setCartQuantity(cartQuantity - 1)}>
-        <img src={minus} alt="" />
+    <InputAmountButtonContainer small={small}>
+      <button onClick={handleMinusClick}>
+        <Icon icon="minus" iconColor="#8047F8" />
       </button>
-      <span>{formatter.formatQuantity(cartQuantity, 2)}</span>
-      <button onClick={() => setCartQuantity(cartQuantity + 1)}>
-        <img src={plus} alt="" />
+      <span>{formatter.formatQuantity(amountQuantity, 2)}</span>
+      <button onClick={handlePlusClick}>
+        <Icon icon="plus" iconColor="#8047F8" />
       </button>
     </InputAmountButtonContainer>
   );

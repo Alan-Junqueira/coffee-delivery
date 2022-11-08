@@ -3,7 +3,7 @@ interface IInputDefault {
   width?: number;
 }
 
-export const CheckoutPageContainer = styled.div`
+export const CheckoutPageContainer = styled.form`
   display: grid;
   grid-template-columns: 1fr 28rem;
   gap: 2rem;

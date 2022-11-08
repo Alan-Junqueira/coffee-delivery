@@ -8,7 +8,9 @@ import {
 } from './styled';
 import { CoffeeCard } from '../../components/CoffeeCard';
 import { BrandIten } from './BrandIten';
-import { coffeList } from '../../libs/coffeeList';
+import { coffeeList } from '../../libs/coffeeList';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 export const Home = () => {
   return (
@@ -46,8 +48,9 @@ export const Home = () => {
       <CoffeesSection>
         <h2>Nossos Cafés</h2>
         <ul>
-          {coffeList.map((coffee, index) => (
+          {coffeeList.map((coffee, index) => (
             <CoffeeCard
+              id={coffee.id}
               banner={coffee.banner}
               price={coffee.price}
               subtitle={coffee.subtitle}

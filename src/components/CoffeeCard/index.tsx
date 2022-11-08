@@ -1,5 +1,8 @@
+import { useContext, useState } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 import { useFormatter } from '../../hooks/useFormatter';
 import { Icon } from '../Icon';
+import { InputAmountButton } from '../InputAmoutButton';
 import {
   Cart,
   CoffeeCardContainer,
@@ -12,6 +15,7 @@ import {
 } from './styled';
 
 interface ICoffeeCard {
+  id: number;
   banner: string;
   tags: string[];
   title: string;
@@ -20,6 +24,7 @@ interface ICoffeeCard {
 }
 
 export const CoffeeCard = ({
+  id,
   banner,
   price,
   subtitle,
@@ -27,6 +32,15 @@ export const CoffeeCard = ({
   title
 }: ICoffeeCard) => {
   const formatter = useFormatter();
+  const [amountQuantity, setAmountQuantity] = useState(1);
+
+  const { addItenToCart } = useContext(CartContext);
+  const cartId = id;
+
+  function handleCartItenAdd() {
+    addItenToCart(cartId, String(amountQuantity));
+    console.log(cartId);
+  }
 
   return (
     <CoffeeCardContainer>
@@ -41,8 +55,12 @@ export const CoffeeCard = ({
       <PriceQuantityCartContainer>
         <CoffeePrice>R$</CoffeePrice>
         <strong>{formatter.formatPrice(+price)}</strong>
-        <input type="number" min={1} />
-        <Cart>
+        <InputAmountButton
+          small={false}
+          setAmountQuantity={setAmountQuantity}
+          amountQuantity={amountQuantity}
+        />
+        <Cart onClick={handleCartItenAdd}>
           <Icon icon="cart" iconColor="#F3F2F2" size={20} />
         </Cart>
       </PriceQuantityCartContainer>

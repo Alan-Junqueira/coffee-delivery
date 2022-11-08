@@ -62,6 +62,7 @@ export const CoffeeDescription = styled.p`
 
 export const PriceQuantityCartContainer = styled.div`
   display: flex;
+  align-items: center;
 
   strong {
     font-family: 'Baloo 2';
@@ -107,6 +108,7 @@ export const CoffeePrice = styled.span`
 export const Cart = styled.button`
   width: 2.375rem;
   height: 2.375rem;
+  margin-left: .5rem;
 
   background-color: ${(props) => props.theme['purple-dark']};
   border-radius: 6px;
@@ -118,5 +120,9 @@ export const Cart = styled.button`
 
   &:hover {
     background-color: ${(props) => props.theme.purple};
+  }
+
+  svg, path, rect{
+    pointer-events: none;
   }
 `;
