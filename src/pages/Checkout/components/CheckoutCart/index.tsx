@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Icon } from '../../../../components/Icon';
 import { InputAmountButton } from '../../../../components/InputAmoutButton';
 import { CartContext } from '../../../../contexts/CartContext';
+import { useFormatter } from '../../../../hooks/useFormatter';
 import { coffeeList } from '../../../../libs/coffeeList';
 import {
   CartItem,
@@ -14,60 +15,64 @@ import {
 
 export const CheckoutCart = () => {
   const [amountQuantity, setAmountQuantity] = useState(1);
-
   const navigate = useNavigate();
+
+  const { formatPriceWithCurrency } = useFormatter();
 
   const { cartItens } = useContext(CartContext);
 
-  // const cartItensActives = cartItens.filter((iten) => {
-  //   let newArr = [];
-  //   for (let i = 0; i < coffeeList.length; i++) {
-  //     if (iten.id === coffeeList[i].id) {
-  //       return newArr.push(coffeeList[i], iten.amountQuantity);
-  //     }
-  //   }
-  // });
-
+  console.log(cartItens);
 
   const handleButtonSubmit = () => {
     // navigate('/checkout-success');
   };
 
+  //* Price Calculation
+  const totalPrice = cartItens.reduce((acc, iten) => {
+    return iten.price * +iten.amountQuantity + acc;
+  }, 0);
+
+  let delivery = 3.5;
+
   return (
     <CheckoutCartContainer>
-      <CartItem>
-        <div>
-          <img src="/images/Type=Americano.png" alt="" />
-        </div>
-        <CartProductDescription>
-          <span>Expresso Tradicional</span>
+      {cartItens.map((iten, index) => (
+        <CartItem key={index}>
           <div>
-            <InputAmountButton
-              small
-              amountQuantity={amountQuantity}
-              setAmountQuantity={setAmountQuantity}
-            />
-            <CartButtonRemove>
-              <Icon icon="trash" iconColor="#8047F8" size={16} />
-              <span>Remover</span>
-            </CartButtonRemove>
+            <img src={iten.banner} alt="" />
           </div>
-        </CartProductDescription>
-        <strong>R$: 9,90</strong>
-      </CartItem>
+          <CartProductDescription>
+            <span>{iten.title}</span>
+            <div>
+              <InputAmountButton
+                small
+                amountQuantity={+iten.amountQuantity}
+                setAmountQuantity={setAmountQuantity}
+              />
+              <CartButtonRemove>
+                <Icon icon="trash" iconColor="#8047F8" size={16} />
+                <span>Remover</span>
+              </CartButtonRemove>
+            </div>
+          </CartProductDescription>
+          <strong>
+            {formatPriceWithCurrency(+iten.amountQuantity * iten.price)}
+          </strong>
+        </CartItem>
+      ))}
 
       <DescriptionCartValues>
         <div>
           <span>Total de Itens</span>
-          <span>R$ 29,70</span>
+          <span>{formatPriceWithCurrency(totalPrice)}</span>
         </div>
         <div>
           <span>Entrega</span>
-          <span>R$ 3,50</span>
+          <span>{formatPriceWithCurrency(delivery)}</span>
         </div>
         <div>
           <strong>Total</strong>
-          <strong>R$ 33,20</strong>
+          <strong>{formatPriceWithCurrency(delivery + totalPrice)}</strong>
         </div>
       </DescriptionCartValues>
 

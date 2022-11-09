@@ -14,6 +14,14 @@ export const useFormatter = () => ({
     }
     const remain = mindigits - quantity.toString().length;
     return `${'0'.repeat(remain)}${quantity}`;
-  }
-  
+  },
+
+  formatPriceWithCurrency: (price: number) => {
+    return price.toLocaleString('pt-br', {
+      minimumFractionDigits: 2,
+      style: 'currency',
+      currency: 'BRL'
+    });
+  },
+
 });

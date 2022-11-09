@@ -20,7 +20,7 @@ interface ICoffeeCard {
   tags: string[];
   title: string;
   subtitle: string;
-  price: number | string;
+  price: number;
 }
 
 export const CoffeeCard = ({
@@ -35,11 +35,17 @@ export const CoffeeCard = ({
   const [amountQuantity, setAmountQuantity] = useState(1);
 
   const { addItenToCart } = useContext(CartContext);
-  const cartId = id;
 
   function handleCartItenAdd() {
-    addItenToCart(cartId, String(amountQuantity));
-    console.log(cartId);
+    addItenToCart(
+      id,
+      String(amountQuantity),
+      banner,
+      price,
+      subtitle,
+      tags,
+      title
+    );
   }
 
   return (

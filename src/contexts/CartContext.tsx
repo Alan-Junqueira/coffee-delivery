@@ -9,7 +9,15 @@ interface ICartContextProvider {
 
 interface ICartContext {
   cartItens: ICartIten[];
-  addItenToCart: (id: number, amountQuantity: string) => void;
+  addItenToCart: (
+    id: number,
+    amountQuantity: string,
+    banner: string,
+    price: number,
+    subtitle: string,
+    tags: string[],
+    title: string
+  ) => void;
   removeItenFromCart: (id: string) => void;
 }
 
@@ -45,8 +53,26 @@ export const CartContextProvider = ({ children }: ICartContextProvider) => {
     );
   }, [cartState]);
 
-  const addItenToCart = (id: number, amountQuantity: string) => {
-    dispatch(CartAction.addCartIten(id, amountQuantity));
+  const addItenToCart = (
+    id: number,
+    amountQuantity: string,
+    banner: string,
+    price: number,
+    subtitle: string,
+    tags: string[],
+    title: string
+  ) => {
+    dispatch(
+      CartAction.addCartIten(
+        id,
+        amountQuantity,
+        banner,
+        price,
+        subtitle,
+        tags,
+        title
+      )
+    );
   };
 
   const removeItenFromCart = (id: string) => {
